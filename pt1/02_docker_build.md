@@ -172,6 +172,8 @@ docker build -t myapp .
 Now there was no need to download dependencies again
 because previous layer did not change!
 
+
+
 ## Multistage build
 
 Sometimes you need to build some stuff and just copy that
@@ -190,7 +192,7 @@ WORKDIR /src
 COPY package-lock.json package.json ./
 RUN npm install
 COPY ./ ./
-COPY --from=builder /bin/shfmt ./
+COPY --from=builder /go/bin/shfmt ./
 CMD ["npm", "start"]
 ```
 
@@ -207,3 +209,111 @@ docker run -it --rm --entrypoint bash myapp
 ```
 
 And you can see that Go artifact shfmt is really there!
+
+## Building with docker compose
+
+Now we can try some basic developement flow with docker compose.
+Create a `docker-compose.yaml` file with following contents
+
+```yaml
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+  redis:
+    image: redis
+```
+
+And start both containers with
+
+```bash
+docker compose up --build
+```
+
+We can also try to add some database with persistence!
+Stop the previous docker compose stack and extend `docker-compose.yaml` a bit
+
+```yaml
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+  redis:
+    image: redis
+  mysql:
+    platform: linux/x86_64
+    image: mysql
+    environment:
+      - MYSQL_DATABASE=trainig
+      - MYSQL_ROOT_PASSWORD=password
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  db:
+```
+
+> Please note the `platform` key. Mysql images are not available for M1 computers
+> so I had to explicitly specify x86_64 platform otherwise I get
+> `no matching manifest for linux/arm64/v8 in the manifest list entries`
+
+In other termimal window, get the id of mysql database and open an new shell
+in this container.
+
+```bash
+docker exec -it <id> bash
+```
+
+Open session to mysql instance
+
+```bash
+mysql -u root -p"${MYSQL_ROOT_PASSWORD}"
+```
+
+And make some change there e.g.
+
+```sql
+CREATE DATABASE test1;
+```
+
+Check if the change really happened
+
+```sql
+SHOW DATABASES;
+```
+
+And escape the container for now.
+
+Stop the docker compose stack (ctrl+c) and remove the containers
+
+```bash
+docker compose rm
+```
+
+and start it again.
+
+```bash
+docker compose up --build
+```
+
+Reopen shell in the mysql container
+
+```bash
+docker exec -it <id> bash
+```
+
+Open session to mysql instance
+
+```bash
+mysql -u root -p"${MYSQL_ROOT_PASSWORD}"
+```
+
+check if the database is still there
+
+```sql
+SHOW DATABASES;
+```
