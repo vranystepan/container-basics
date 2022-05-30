@@ -25,13 +25,17 @@ They help with load balancing and they also take care of service discovery.
 
     > Please note the selector, it matches the labels
     > specified in the previous section! This is how
-    > Kubernetes know where route traffice to.
+    > Kubernetes know where route traffic to!
 
 3. get ip addresses of the pods
 
     ```bash
     kubectl get pods -o custom-columns=NAME:metadata.name,IP:status.podIP
     ```
+
+    > Plese note that each pod has its own IP adddress.
+    > This is general requirement for Kubernetes networking,
+    > pods need to be addresable by unique IP addresses.
 
 4. and now list the endpoints created by this service
 
@@ -67,25 +71,25 @@ They help with load balancing and they also take care of service discovery.
 7. and try to reach `app` service from there
 
     ```bash
-    curl http://app -H 'User-Agent: direct-call-from-pod'
+    curl http://app
     ```
 
 8. you can try even different hostname
 
     ```bash
-    curl http://app.<your namespace> -H 'User-Agent: direct-call-from-pod'
+    curl http://app.<your namespace>
     ```
 
 9. or
 
     ```bash
-    curl http://app.<your namespace>.svc -H 'User-Agent: direct-call-from-pod'
+    curl http://app.<your namespace>.svc
     ```
 
 10. or
 
     ```bash
-    curl http://app.<your namespace>.svc.cluster.local -H 'User-Agent: direct-call-from-pod'
+    curl http://app.<your namespace>.svc.cluster.local
     ```
 
     > this is what we call service discovery. You can use
@@ -100,8 +104,8 @@ They help with load balancing and they also take care of service discovery.
     kubectl port-forward svc/app 8080:80
     ```
 
-    > please not the log messages, you have requested service
-    > but it's forwarding to the pod. 
+    > please not the log messages, you have requested services's port
+    > but it's forwarding to the pod's port.
 
     and from the different shell:
 

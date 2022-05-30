@@ -29,6 +29,11 @@ One good example: database migrations before updating the Deployment.
       backoffLimit: 4
     ```
 
+    > And here we go again, when you look at `spec.template.spec`, what
+    > do you see there? Yup, it's just pod + metadata. Same reason,
+    > job controller will ultimately create a pod since that's
+    > the only way to run containers in Kubernetes.
+
 3. list the pods
 
     ```bash
@@ -80,6 +85,9 @@ One good example: database migrations before updating the Deployment.
     ```bash
     watch kubectl get pods
     ```
+
+    > Try to count the failed pods. Why it does not run infinitely?
+    > That's because we have `backoffLimit` specified.
 
 9. view the logs
 

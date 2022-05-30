@@ -33,7 +33,9 @@ go back to the previous window / tab and press ctrl + c.
 ## Run container as "daemon"
 
 Use command from the previous example but add `-d` right
-after the run keyword
+after the run keyword.
+
+> `-d` stands for daemon, it means [background process](https://en.wikipedia.org/wiki/Daemon_(computing))
 
 ```bash
 docker run -d nginx
@@ -45,6 +47,9 @@ Copy this id and use it in `docker inspect` command e.g.
 ```bash
 docker inspect c5b796e4560f506556b13edb8c70f8c36e8379583fe9d720cff32cc4f6bc8c7b
 ```
+
+> `docker inspect` is good the get some low-level infromation
+> about the container. 
 
 Now can go through all the topics we were talking about it
 the theoretical session:
@@ -64,6 +69,10 @@ docker kill c5b796e4560f
 ## Introduce memory limit
 
 Let's try to add some memory limit and check the configuration again.
+
+> Memory limit effectively configured control group so container
+> can't use any memory beyond this limit. This is useful in case
+> you don't want to endanger other processes with possible usage peaks
 
 ```bash
 docker run -d --memory 100Mi nginx
@@ -88,6 +97,9 @@ cat /sys/fs/cgroup/memory.max
 So if the application runtime is aware of cgroups - it can
 easily read the limits and behave accordingly.
 
+> For instance, Nodejs and Java applications are able to
+> configure heap size based on the control group config.
+
 ## expose container's port to you host
 
 This container is running Nginx on port 80. But when you try to
@@ -105,6 +117,11 @@ and start a new one with additional flag `-p 8080:80`.
 ```bash
 docker run -d -p 8080:80 nginx
 ```
+
+> please note that `-p` stands for `publish`, the first number
+> is the host's port, the second number is the container's port.
+> So in this particular case, container's port 80 will be accessible
+> on localhost port 8080.
 
 List running containers
 
@@ -213,6 +230,9 @@ docker exec -it <nginx id> sh
 
 In the container, install `nmap`
 
+> `nmap` is very useful tool for port scanning and similar tasks.
+> In this example we'll just check if the port is open.
+
 ```bash
 apk add nmap
 ```
@@ -222,6 +242,10 @@ and try if the redis port is open
 ```bash
 nmap -Pn redis -p 6379
 ```
+
+> With this command we're checking if the port is open.
+> This will efectively verify if the name resolution works
+> or not.
 
 Please note that we was able to use container name as the dns name.
 That's brilliant!

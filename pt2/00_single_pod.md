@@ -14,7 +14,13 @@ soon.
 1. obtain kubeconfig from AWS API
 
     ```bash
-    AWS_PROFILE=workshop-student aws eks update-kubeconfig --name workshops-01
+    gcloud container clusters get-credentials workshops-01 --zone europe-central2-a --project revolgy-vaimo-edu
+    ```
+
+    and create your namespace
+
+    ```bash
+    kubectl create namespace <name and surname delimited by dash>
     ```
 
 2. make sure you're in the correct namespace
@@ -23,7 +29,7 @@ soon.
     kubectl config set-context --current --namespace=<assigned namespace>
     ```
 
-3. create a local file with the following contents:
+3. create a local file (e.g. `pod.yaml`) with the following contents:
 
     ```yaml
     apiVersion: v1
@@ -38,6 +44,12 @@ soon.
             - containerPort: 8080
     ```
 
+    and apply this file to the Kubernetes with `kubectl apply` command e.g.
+
+    ```bash
+    kubectl apply -f pod.yaml
+    ``` 
+
 4. check if the pod is running
 
     ```bash
@@ -49,6 +61,13 @@ soon.
     ```bash
     kubectl describe pod app
     ```
+
+    > try to experiment with `get` and `describe` commands a bit,
+    > you can use these commands to interact with any object and
+    > get some interesting information. Some objects are regularly
+    > updated by their controllers so you can even fetch some
+    > very relevant lifecycle information. For instance, try to
+    > get `node` resource and then describe one of them.
 
 6. open a new shell in this pod
 
@@ -62,9 +81,13 @@ soon.
     kubectl edit pod app
     ```
 
+    > Once again, you can edit any resource you want. But you should not do it
+    > in the production environment. Try to rather keep the truth in the
+    > git repository. Always.
+
 8. yeah, it does not work!
 
-9. so just delete it, we don't need it
+9. so just delete it, we don't need it anymore.
 
     ```bash
     kubectl delete pod app
