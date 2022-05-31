@@ -95,4 +95,7 @@ One good example: database migrations before updating the Deployment.
     kubectl logs job/job
     ```
 
+    > please note that we don't need to specify the pod's name,
+    > Kubernetes is able to derive it from the job.
+
 10. proceed to the [next section](04_periodically_running_job.md)

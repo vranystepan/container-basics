@@ -50,6 +50,9 @@ soon.
     kubectl apply -f pod.yaml
     ``` 
 
+    > Please try to remember this command, we're gonna use it in all the upcoming
+    > modules.
+
 4. check if the pod is running
 
     ```bash
@@ -76,6 +79,10 @@ soon.
     ```
 
 7. now try to edit some parameters of this pod
+
+    > Following command will open a text editor. In Windows it's gonna be
+    > notepad, in Mac OS or Linux it's gonna be editor configured by
+    > `EDITOR` environment variable.
 
     ```bash
     kubectl edit pod app

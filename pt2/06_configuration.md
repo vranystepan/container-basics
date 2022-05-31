@@ -24,9 +24,13 @@
     ```
 
     > please note the value of `CONFIG_SOME_SECRET_VALUE_1`, this is base64-encoded
-    > string.
+    > string. You can try to get its decoded value by `base64 -d`.
 
 3. also, adjust `app` deployment a bit:
+
+    > in the following example we're gonna use ConfigMaps as the source
+    > of environment variables. This is pretty standard scenario - parametrization
+    > via environment variables.
 
     ```yaml
     apiVersion: apps/v1
@@ -77,6 +81,9 @@
 
 6. update the `app` deployment again
 
+    > Naming all the configuration variables in the deployment could be a bit
+    > noisy sometimes. Hence you can load all the values at once.
+
     ```yaml
     apiVersion: apps/v1
     kind: Deployment
@@ -106,6 +113,8 @@
                     name: app
     ```
 
+    > What do you think? Is it more readable than the previous manifest?
+
 7. wait a few seconds and open a new shell to your application container
 
     ```bash
@@ -117,6 +126,8 @@
     ```bash
     env | grep "CONFIG_"
     ```
+
+    and then exit the container with `exit` command.
 
 9. try to add some value to the ConfigMap
 

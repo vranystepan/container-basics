@@ -6,7 +6,9 @@ This resource is widely used in PHP-based services but you can see it
 even in other (non-PHP) stacks.
 
 Even I'm using this for some infrastructure tasks like backups
-of self-managed services. It just works.
+of self-managed services. It just works. But please read the documentation
+in order to get some details about the guaranties you have with this
+resource.
 
 ---
 
@@ -38,6 +40,9 @@ of self-managed services. It just works.
               restartPolicy: OnFailure
     ```
 
+    > Please note the `.spec.jobTemplate.spec.template`.  I'm repeating myself here
+    > but here we go: it's a pod.
+
 3. wait a few seconds and list spawned jobs
 
     ```bash
@@ -56,6 +61,9 @@ of self-managed services. It just works.
     kubectl create job --from=cronjob/cronjob cronjob-manual-01
     ```
 
+    > You can use this to re-run some failed job. Or sometimes you need
+    > to run the task sooneer than the cron expressions says.
+
 6. and once again, check the generated resources
 
     ```bash
@@ -68,3 +76,5 @@ of self-managed services. It just works.
     ```bash
     kubectl delete cj cronjob
     ```
+
+8. proceed to the [next section](./05_ingress.md)
