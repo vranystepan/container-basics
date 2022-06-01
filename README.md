@@ -34,5 +34,8 @@ Right before the session you need to perform login to the
 Kubernetes cluster:
 
 ```bash
+gcloud auth application-default login
+gcloud auth login
+
 gcloud container clusters get-credentials workshops-01 --zone europe-central2-a --project revolgy-vaimo-edu
 ```
