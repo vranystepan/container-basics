@@ -51,7 +51,7 @@
     <summary>Click to expand!</summary>
 
     ```bash
-    curl https://<your namespace>.s01.training.eks.rocks
+    curl https://<your namespace>.s02.training.eks.rocks
     ```
     </details>
 
