@@ -30,7 +30,7 @@ how to work with this object.
         spec:
           containers:
             - name: app
-              image: eu.gcr.io/revolgy-vaimo-edu/training/application:working
+              image: docker.io/vranystepan/workshop-app:working
               ports:
                 - containerPort: 8080
     ```
@@ -122,7 +122,7 @@ how to work with this object.
               emptyDir: {}
           initContainers:
             - name: download-assets
-              image: eu.gcr.io/revolgy-vaimo-edu/training/application:working
+              image: docker.io/vranystepan/workshop-app:working
               cmd:
                 - sh
                 - -c
@@ -134,7 +134,7 @@ how to work with this object.
                   mountPath: /assets
           containers:
             - name: app
-              image: eu.gcr.io/revolgy-vaimo-edu/training/application:working
+              image: docker.io/vranystepan/workshop-app:working
               ports:
                 - containerPort: 8080
               volumeMounts:
@@ -189,7 +189,7 @@ how to work with this object.
               emptyDir: {}
           initContainers:
             - name: download-assets
-              image: eu.gcr.io/revolgy-vaimo-edu/training/application:working
+              image: docker.io/vranystepan/workshop-app:working
               command:
                 - sh
                 - -c
@@ -201,7 +201,7 @@ how to work with this object.
                   mountPath: /assets
           containers:
             - name: app
-              image: eu.gcr.io/revolgy-vaimo-edu/training/application:working
+              image: docker.io/vranystepan/workshop-app:working
               ports:
                 - containerPort: 8080
               volumeMounts:

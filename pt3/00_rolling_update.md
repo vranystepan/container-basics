@@ -38,7 +38,7 @@ of this strategy a bit.
                   sleep 20
           containers:
             - name: app
-              image: eu.gcr.io/revolgy-vaimo-edu/training/application:working
+              image: docker.io/vranystepan/workshop-app:working
               ports:
                 - containerPort: 8080
                   name: http
@@ -118,7 +118,7 @@ of this strategy a bit.
                   sleep 20
           containers:
             - name: app
-              image: eu.gcr.io/revolgy-vaimo-edu/training/application:working
+              image: docker.io/vranystepan/workshop-app:working
               ports:
                 - containerPort: 8080
                   name: http
@@ -161,7 +161,7 @@ of this strategy a bit.
                   sleep 20
           containers:
             - name: app
-              image: eu.gcr.io/revolgy-vaimo-edu/training/application:working
+              image: docker.io/vranystepan/workshop-app:working
               ports:
                 - containerPort: 8080
                   name: http
@@ -204,7 +204,7 @@ of this strategy a bit.
                   sleep 20
           containers:
             - name: app
-              image: eu.gcr.io/revolgy-vaimo-edu/training/application:working
+              image: docker.io/vranystepan/workshop-app:working
               ports:
                 - containerPort: 8080
                   name: http

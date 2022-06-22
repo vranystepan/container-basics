@@ -23,7 +23,7 @@
         spec:
           containers:
             - name: app
-              image: eu.gcr.io/revolgy-vaimo-edu/training/application:breaking
+              image: docker.io/vranystepan/workshop-app:breaking
               ports:
                 - containerPort: 8080
                   name: http
@@ -68,7 +68,7 @@
 5. now we're gonna deploy slowly starting service. This simulates some startup tasks that sometimes happen in applications.  Create a local file with the following contents:
 
     ```yaml
-              image: eu.gcr.io/revolgy-vaimo-edu/training/application:sleeping
+              image: docker.io/vranystepan/workshop-app:working:sleeping
     ```
 
 

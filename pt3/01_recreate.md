@@ -37,7 +37,7 @@ of your application and you just want to replace all pods with the new ones.
                   sleep 20
           containers:
             - name: app
-              image: eu.gcr.io/revolgy-vaimo-edu/training/application:working
+              image: docker.io/vranystepan/workshop-app:working
               ports:
                 - containerPort: 8080
                   name: http

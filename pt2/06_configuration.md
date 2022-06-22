@@ -51,7 +51,7 @@
         spec:
           containers:
             - name: app
-              image: eu.gcr.io/revolgy-vaimo-edu/training/application:working
+              image: docker.io/vranystepan/workshop-app:working
               ports:
                 - containerPort: 8080
               env:
@@ -103,7 +103,7 @@
         spec:
           containers:
             - name: app
-              image: eu.gcr.io/revolgy-vaimo-edu/training/application:working
+              image: docker.io/vranystepan/workshop-app:working
               ports:
                 - containerPort: 8080
               envFrom:
@@ -170,7 +170,7 @@
                 name: app
           containers:
             - name: app
-              image: eu.gcr.io/revolgy-vaimo-edu/training/application:working
+              image: docker.io/vranystepan/workshop-app:working
               ports:
                 - containerPort: 8080
               volumeMounts:
