@@ -30,13 +30,19 @@ soon.
     export KUBECONFIG="$(pwd)/kubeconfig.yaml"
     ```
 
-2. make sure you're in the correct namespace
+2. create your namespace
+
+    ```bash
+    kubectl create namespace <name and surname, delimited by ->
+    ```
+
+3. make sure you're in the correct namespace
 
     ```bash
     kubectl config set-context --current --namespace=<assigned namespace>
     ```
 
-3. create a local file (e.g. `pod.yaml`) with the following contents:
+4. create a local file (e.g. `pod.yaml`) with the following contents:
 
     ```yaml
     apiVersion: v1
@@ -60,13 +66,13 @@ soon.
     > Please try to remember this command, we're gonna use it in all the upcoming
     > modules.
 
-4. check if the pod is running
+5. check if the pod is running
 
     ```bash
     kubectl get pods
     ```
 
-5. describe the pod
+6. describe the pod
 
     ```bash
     kubectl describe pod app
@@ -79,13 +85,13 @@ soon.
     > very relevant lifecycle information. For instance, try to
     > get `node` resource and then describe one of them.
 
-6. open a new shell in this pod
+7. open a new shell in this pod
 
     ```bash
     kubectl exec -it app -- bash
     ```
 
-7. now try to edit some parameters of this pod
+8. now try to edit some parameters of this pod
 
     > Following command will open a text editor. In Windows it's gonna be
     > notepad, in Mac OS or Linux it's gonna be editor configured by
@@ -99,12 +105,12 @@ soon.
     > in the production environment. Try to rather keep the truth in the
     > git repository. Always.
 
-8. yeah, it does not work!
+9. yeah, it does not work!
 
-9. so just delete it, we don't need it anymore.
+10. so just delete it, we don't need it anymore.
 
     ```bash
     kubectl delete pod app
     ```
 
-10. and move to the [next section](./01_deployment.md), that's gonna be fun!
+11. and move to the [next section](./01_deployment.md), that's gonna be fun!
