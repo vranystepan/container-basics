@@ -13,17 +13,7 @@ soon.
 
 1. obtain kubeconfig from AWS API
 
-    ```bash
-    gcloud container clusters get-credentials workshops-01 --zone <region> --project <gcp project id>
-    ```
-
-    and create your namespace
-
-    ```bash
-    kubectl create namespace <name and surname delimited by dash>
-    ```
-
-    if this is a digital ocean cluster, please save provided Kubernetes config as
+    Save provided Kubernetes config as
     `kubeconfig.yaml` and point environment variable `KUBECONFIG` to this file e.g.
 
     ```bash
