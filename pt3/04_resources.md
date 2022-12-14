@@ -72,13 +72,13 @@
 6. send a few more requests there and see what happened
 
     ```bash
-    curl https://<your namespace>.s02.training.eks.rocks/fill
+    curl https://<your namespace>.workshop.stepanvrany.cz/fill
     ```
 
     or
 
     ```powershell
-    Invoke-WebRequest -Headers https://<your namespace>.s02.training.eks.rocks/fill
+    Invoke-WebRequest -Headers https://<your namespace>.workshop.stepanvrany.cz/fill
     ```
 
     and then

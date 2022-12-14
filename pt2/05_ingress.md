@@ -15,7 +15,7 @@ other controllers.
 
 In this demo we're gonna use Nginx ingress controller. This open source
 project is widely used by the whole Kubernetes community so you can
-find really handy tutorials all over the internet. 
+find really handy tutorials all over the internet.
 
 ----
 
@@ -35,10 +35,10 @@ find really handy tutorials all over the internet.
       ingressClassName: nginx
       tls:
       - hosts:
-        - <your namespace>.s02.training.eks.rocks
+        - <your namespace>.workshop.stepanvrany.cz
         secretName: training-tls
       rules:
-      - host: <your namespace>.s02.training.eks.rocks
+      - host: <your namespace>.workshop.stepanvrany.cz
         http:
           paths:
           - path: /
@@ -63,13 +63,13 @@ find really handy tutorials all over the internet.
 4. try to reach your app directly from your workstation, please replace `<your namespace>` with the actual name of your namespace.
 
     ```bash
-    curl https://<your namespace>.s02.training.eks.rocks
+    curl https://<your namespace>.workshop.stepanvrany.cz
     ```
 
     or
 
     ```powershell
-    Invoke-WebRequest https://<your namespace>.s02.training.eks.rocks
+    Invoke-WebRequest https://<your namespace>.workshop.stepanvrany.cz
     ```
 
 5. add following annotation to the ingress object and send a new request to the service

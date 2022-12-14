@@ -51,7 +51,7 @@
     <summary>Click to expand!</summary>
 
     ```bash
-    curl https://<your namespace>.s02.training.eks.rocks
+    curl https://<your namespace>.workshop.stepanvrany.cz
     ```
     </details>
 
@@ -78,13 +78,13 @@
     <summary>Click to expand!</summary>
 
     ```bash
-    curl https://<your namespace>.s02.training.eks.rocks
+    curl https://<your namespace>.workshop.stepanvrany.cz
     ```
 
     or
 
     ```powershell
-    Invoke-WebRequest https://<your namespace>.s02.training.eks.rocks
+    Invoke-WebRequest https://<your namespace>.workshop.stepanvrany.cz
     ```
     </details>
 

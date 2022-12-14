@@ -1,0 +1,51 @@
+controller:
+  replicaCount: ${replica_count}
+  resources:
+    limits:
+      memory: ${memory_limit}
+      cpu: ${cpu_limit}
+    requests:
+      cpu: ${cpu_request}
+      memory: ${memory_request}
+  podLabels:
+    app: nginx-ingress
+    release: nginx-prod
+
+  podAnnotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/path: "/metrics"
+    prometheus.io/port: "10254"
+    prometheus.io/scheme: "http"
+
+  ingressClass: "nginx"
+
+  publishService:
+    enabled: true
+
+  config:
+    error-log-level: "error"
+    log-format-upstream: '{"layer":"ingress","time_local":"$time_iso8601","remote_addr":"$remote_addr","forwarded_for":"$http_x_forwarded_for","method":"$request_method","uri":"$scheme://$host$request_uri","user_agent":"$http_user_agent","status":"$status","response_bytes":"$body_bytes_sent","duration_sec":"$request_time"}'
+    proxy-body-size: "500M"
+    proxy-next-upstream: "error timeout invalid_header http_502 http_503 http_504"
+    proxy-read-timeout: "120"
+    proxy-send-timeout: "120"
+    proxy-connect-timeout: "120"
+    use-forwarded-headers: "true"
+    enable-brotli: "true"
+
+  metrics:
+    enabled: true
+
+  service:
+    externalTrafficPolicy: Cluster
+    type: NodePort
+    nodePorts:
+      https: ${https_port}
+      http: ${http_port}
+    enableHttp: true
+
+  admissionWebhooks:
+    enabled: false
+
+defaultBackend:
+  enabled: false

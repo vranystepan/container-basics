@@ -98,7 +98,7 @@
 11. and simulate failure with following http request:
 
     ```bash
-    curl https://<your namespace>.s02.training.eks.rocks/_health/set/notalive -v
+    curl https://<your namespace>.workshop.stepanvrany.cz/_health/set/notalive -v
     ```
 
 12. watch what's happening in your namespace

@@ -1,0 +1,6 @@
+.envrc
+workshop-01-kubeconfig.yaml
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+
