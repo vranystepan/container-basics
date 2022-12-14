@@ -79,7 +79,7 @@ find really handy tutorials all over the internet.
       more_set_headers "Request-Id: $req_id";
     ```
 
-6. view the headers you just got from the service
+6. view the headers you just got from the service. As you can see we were able to modify the response. 
 
 7. check other [interesting annotations](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/) in the official documentation
 
