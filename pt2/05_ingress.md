@@ -72,18 +72,14 @@ find really handy tutorials all over the internet.
     Invoke-WebRequest https://<your namespace>.workshop.stepanvrany.cz
     ```
 
-5. add following annotation to the ingress object and send a new request to the service
+5. add following annotation to the ingress object and send a new request to the service with some verbose flag
 
     ```yaml
     nginx.ingress.kubernetes.io/configuration-snippet: |
       more_set_headers "Request-Id: $req_id";
     ```
 
-6. view the logs of your app
-
-    ```bash
-    kubectl logs deploy/app
-    ```
+6. view the headers you just got from the service
 
 7. check other [interesting annotations](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/) in the official documentation
 
