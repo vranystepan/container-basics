@@ -17,7 +17,7 @@
 3. wait for the finished RollingUpdate and send following request to your ingress
 
     ```bash
-    curl https://<your namespace>.s02.training.eks.rocks/_health/set/notready -v
+    curl https://<your namespace>.workshop.stepanvrany.cz/_health/set/notready -v
     ```
 
 4. watch what's happening in your namespace
