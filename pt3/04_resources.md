@@ -51,13 +51,13 @@
 5. now, try to fill these 100MiB and check the usage
 
     ```bash
-    curl https://<your namespace>.s02.training.eks.rocks/fill
+    curl https://<your namespace>.workshop.stepanvrany.cz/fill
     ```
 
     or
 
     ```powershell
-    Invoke-WebRequest -Headers https://<your namespace>.s02.training.eks.rocks/fill
+    Invoke-WebRequest -Headers https://<your namespace>.workshop.stepanvrany.cz/fill
     ```
 
     and then list the resources used by your application
